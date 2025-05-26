@@ -59,15 +59,17 @@ class AppointmentSheetReport(object):
 
 		if appointment_list:
 			project_data = frappe.db.sql("""
-				SELECT name as project, appointment
+				SELECT name as project, appointment, project_type
 				FROM tabProject
 				WHERE appointment in %s
 			""", [appointment_list], as_dict=1)
 
-			project_map = {d.appointment: d.project for d in project_data}
+			project_map = {d.appointment: d for d in project_data}
 
 			for d in self.data:
-				d.project = project_map.get(d.appointment)
+				project_details = project_map.get(d.appointment, {})
+				d.project = project_details.get("project")
+				d.project_type = project_details.get("project_type")
 
 	def get_reminder_data(self):
 		if automated_reminder_enabled():
@@ -96,6 +98,9 @@ class AppointmentSheetReport(object):
 			# Model Name if not a variant
 			if not d.applies_to_variant_of_name:
 				d.applies_to_variant_of_name = d.applies_to_item_name
+
+			if d.get("project_type"):
+				self.filters.has_project_type = True
 
 			# Date/Time Formatting
 			self.set_formatted_datetime(d)
@@ -146,11 +151,15 @@ class AppointmentSheetReport(object):
 			{'label': _("Sales Person"), 'fieldname': 'sales_person', 'fieldtype': 'Link', 'options': "Sales Person", 'width': 110},
 			{"label": _("Remarks"), "fieldname": "remarks", "fieldtype": "Data", "width": 200, "editable": 1},
 			{'label': _("Project"), 'fieldname': 'project', 'fieldtype': 'Link', 'width': 100, 'options': 'Project'},
+			{'label': _("Project Type"), 'fieldname': 'project_type', 'fieldtype': 'Link', 'width': 100, 'options': 'Project Type'},
 			{'label': _("Source"), 'fieldname': 'appointment_source', 'fieldtype': 'Data', 'width': 100},
 			{"label": _("Reminder"), "fieldname": "reminder", "fieldtype": "Data", "width": 200},
 			{"label": _("Confirmation Time"), "fieldname": "confirmation_dt_fmt", "fieldtype": "Data", "width": 140},
 			{'label': _("Created By"), 'fieldname': 'owner', 'fieldtype': 'Link', "options": "User", "width": 150},
 		]
+
+		if not self.filters.has_project_type:
+			columns = [c for c in columns if c.get("fieldname") != "project_type"]
 
 		return columns
 
