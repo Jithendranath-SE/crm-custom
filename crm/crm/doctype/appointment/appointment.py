@@ -46,6 +46,7 @@ class Appointment(StatusUpdater):
 		self.set_scheduled_reminder_onload()
 
 	def validate(self):
+		self.customer_acknowledged = 0
 		self.set_missing_values()
 		self.validate_previous_appointment()
 		self.validate_timeslot_validity()
@@ -575,6 +576,13 @@ class Appointment(StatusUpdater):
 	def send_appointment_missed_notification(self):
 		if not self.disable_automated_notifications:
 			self.run_method("notify_appointment_missed")
+
+	def update_customer_acknowledged(self):
+		if self.customer_acknowledged:
+			return
+
+		self.db_set("customer_acknowledged", 1, notify=True)
+		self.add_comment("Label", _("Received Customer Acknowledgement"))
 
 
 @frappe.whitelist()

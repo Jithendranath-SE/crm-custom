@@ -16,6 +16,7 @@
   "amended_from",
   "section_break_chg7",
   "confirmation_dt",
+  "customer_acknowledged",
   "column_break_mbkn",
   "check_in_user",
   "check_in_dt",
@@ -539,12 +540,21 @@
    "hidden": 1,
    "label": "Disable Automated Notifications",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "customer_acknowledged",
+   "fieldname": "customer_acknowledged",
+   "fieldtype": "Check",
+   "label": "Acknowledged by Customer",
+   "no_copy": 1,
+   "read_only": 1
   }
  ],
  "is_calendar_and_gantt": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-19 23:28:15.392698",
+ "modified": "2025-05-26 00:29:57.029377",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Appointment",
