@@ -16,7 +16,6 @@
   "amended_from",
   "section_break_chg7",
   "confirmation_dt",
-  "customer_acknowledged",
   "column_break_mbkn",
   "check_in_user",
   "check_in_dt",
@@ -34,8 +33,6 @@
   "end_dt",
   "time_slots_section",
   "appointment_slot_picker_html",
-  "sec_applies_to",
-  "col_break_applies_to",
   "customer_details_section",
   "appointment_for",
   "party_name",
@@ -65,6 +62,8 @@
   "voice_of_customer",
   "column_break_djlqw",
   "sales_person",
+  "column_break_vvla",
+  "campaign",
   "section_break_nn0k5",
   "description",
   "appointment_remarks_section",
@@ -285,16 +284,6 @@
    "fieldtype": "Data",
    "label": "Tax ID",
    "read_only": 1
-  },
-  {
-   "fieldname": "sec_applies_to",
-   "fieldtype": "Section Break",
-   "hidden": 1,
-   "label": "Applies To"
-  },
-  {
-   "fieldname": "col_break_applies_to",
-   "fieldtype": "Column Break"
   },
   {
    "collapsible": 1,
@@ -542,19 +531,20 @@
    "read_only": 1
   },
   {
-   "default": "0",
-   "depends_on": "customer_acknowledged",
-   "fieldname": "customer_acknowledged",
-   "fieldtype": "Check",
-   "label": "Acknowledged by Customer",
-   "no_copy": 1,
-   "read_only": 1
+   "fieldname": "column_break_vvla",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "campaign",
+   "fieldtype": "Link",
+   "label": "Campaign",
+   "options": "Campaign"
   }
  ],
  "is_calendar_and_gantt": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-26 00:29:57.029377",
+ "modified": "2025-06-18 16:04:31.361870",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Appointment",
