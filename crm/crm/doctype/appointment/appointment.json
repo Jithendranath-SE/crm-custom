@@ -16,6 +16,7 @@
   "amended_from",
   "section_break_chg7",
   "confirmation_dt",
+  "customer_acknowledged",
   "column_break_mbkn",
   "check_in_user",
   "check_in_dt",
@@ -33,6 +34,8 @@
   "end_dt",
   "time_slots_section",
   "appointment_slot_picker_html",
+  "sec_applies_to",
+  "col_break_applies_to",
   "customer_details_section",
   "appointment_for",
   "party_name",
@@ -284,6 +287,16 @@
    "fieldtype": "Data",
    "label": "Tax ID",
    "read_only": 1
+  },
+  {
+   "fieldname": "sec_applies_to",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Applies To"
+  },
+  {
+   "fieldname": "col_break_applies_to",
+   "fieldtype": "Column Break"
   },
   {
    "collapsible": 1,
