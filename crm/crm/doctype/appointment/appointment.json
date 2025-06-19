@@ -65,6 +65,8 @@
   "voice_of_customer",
   "column_break_djlqw",
   "sales_person",
+  "column_break_jbsi",
+  "campaign",
   "section_break_nn0k5",
   "description",
   "appointment_remarks_section",
@@ -549,12 +551,23 @@
    "label": "Acknowledged by Customer",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_jbsi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "campaign",
+   "fieldtype": "Link",
+   "label": "Campaign",
+   "no_copy": 1,
+   "options": "Campaign"
   }
  ],
  "is_calendar_and_gantt": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-26 00:29:57.029377",
+ "modified": "2025-06-18 16:30:03.838252",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Appointment",
