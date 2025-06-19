@@ -307,9 +307,12 @@ crm.Opportunity = class Opportunity extends frappe.ui.form.Controller {
 	}
 
 	auto_fill_sales_person(row) {
-		if (!row.sales_person && this.frm.doc.sales_person) {
-			frappe.model.set_value(row.doctype, row.name, 'sales_person', this.frm.doc.sales_person);
-		}
+		if (row.sales_person) return;
+		crm.utils.get_sales_person_from_user(sales_person => {
+			if (sales_person) {
+				frappe.model.set_value(row.doctype, row.name, 'sales_person', sales_person);
+			}
+		});
 	}
 
 };
