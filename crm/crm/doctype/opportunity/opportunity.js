@@ -301,13 +301,9 @@ crm.Opportunity = class Opportunity extends frappe.ui.form.Controller {
 		});
 	}
 
-	contact_schedule_add() {
-		const table = this.frm.doc.contact_schedule;
-		const last_row = table?.[table.length - 1];
-
-		if (!last_row) return;
-
-		this.auto_fill_sales_person(last_row);
+	contact_schedule_add(frm, cdt, cdn) {
+		const row = locals[cdt][cdn];
+		this.auto_fill_sales_person(row);
 	}
 
 	auto_fill_sales_person(row) {
