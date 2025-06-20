@@ -160,7 +160,7 @@ class Opportunity(StatusUpdater):
 			self.append('contact_schedule', {
 				'schedule_date': schedule_date,
 				'to_discuss': to_discuss,
-				'sales_person': self.sales_person,
+				'sales_person': self.user_linked_sales_person or self.sales_person,
 			})
 
 	def set_follow_up_contact_date(self, contact_date):
