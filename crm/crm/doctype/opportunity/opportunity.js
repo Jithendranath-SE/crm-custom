@@ -300,6 +300,24 @@ crm.Opportunity = class Opportunity extends frappe.ui.form.Controller {
 			party: this.frm.doc.party_name,
 		});
 	}
+
+	contact_schedule_add(frm, cdt, cdn) {
+		const row = locals[cdt][cdn];
+		this.set_follow_up_sales_person_from_user(row);
+	}
+
+	set_follow_up_sales_person_from_user(row) {
+		if (row.sales_person) {
+			return;
+		}
+
+		crm.utils.get_sales_person_from_user(sales_person => {
+			if (sales_person) {
+				frappe.model.set_value(row.doctype, row.name, 'sales_person', sales_person);
+			}
+		});
+	}
+
 };
 
 extend_cscript(cur_frm.cscript, new crm.Opportunity({frm: cur_frm}));
