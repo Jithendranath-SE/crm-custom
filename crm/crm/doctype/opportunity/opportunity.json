@@ -19,7 +19,6 @@
   "sales_person",
   "opportunity_type",
   "conversion_document",
-  "user_linked_sales_person",
   "column_break_13",
   "transaction_date",
   "due_date",
@@ -497,19 +496,13 @@
    "fieldname": "details",
    "fieldtype": "Small Text",
    "label": "Details"
-  },
-  {
-   "fieldname": "user_linked_sales_person",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "User Linked Sales Person"
   }
  ],
  "icon": "fa fa-info-sign",
  "idx": 195,
  "is_calendar_and_gantt": 1,
  "links": [],
- "modified": "2025-06-20 13:12:19.641117",
+ "modified": "2023-11-28 21:35:15.834005",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Opportunity",

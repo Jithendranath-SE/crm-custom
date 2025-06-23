@@ -121,7 +121,6 @@ crm.Opportunity = class Opportunity extends frappe.ui.form.Controller {
 		crm.utils.get_sales_person_from_user(sales_person => {
 			if (sales_person) {
 				this.frm.set_value('sales_person', sales_person);
-				this.frm.set_value('user_linked_sales_person', sales_person)
 			}
 		});
 	}
